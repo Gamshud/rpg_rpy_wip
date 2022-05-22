@@ -376,7 +376,6 @@ init -2 python:
             if timedur > 0:
                 self.buffs.append([timedur, items[itemname]['itemn']])
             self.delitem(itemname, 1)
-            self.add_count(buff=itemname)
             
             self.max_hp += items[itemname].get("max_hp", 0)
             self.max_mp += items[itemname].get("max_mp", 0)
@@ -388,18 +387,6 @@ init -2 python:
             self.strength += items[itemname].get("strength", 0)
             self.agil += items[itemname].get("agil", 0)
             self.intel += items[itemname].get("intel", 0)
-            
-            
-        def add_count(self, buff="None", many=1):
-            if buff == "None":
-                print("Error!")
-                pass
-            elif buff in self.buffs_count:
-                for i in self.buffs_count:
-                    if i[0] == buff:
-                        i[1] += many
-            elif buff not in self.buffs_count:
-                self.buffs_count.append([buff, many])
             
         def buff_del(self, itemname):
             self.max_hp -= items[itemname].get("max_hp", 0)
